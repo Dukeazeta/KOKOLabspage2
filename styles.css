@@ -59,6 +59,34 @@ nav {
     align-items: center;
 }
 
+.nav-links a:not(.contact-btn) {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:not(.contact-btn)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:not(.contact-btn):hover::after {
+    width: 100%;
+}
+
+.nav-links a:not(.contact-btn):hover {
+    color: var(--primary-color);
+}
+
 .nav-links a {
     text-decoration: none;
     color: #333;
