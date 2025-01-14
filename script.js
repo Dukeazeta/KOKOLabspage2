@@ -74,6 +74,7 @@ function initCarousel() {
     let isDragging = false;
     let startTime = 0;
     let isAnimating = false;
+    let isSwiping = false;
     
     function showSlide(index, direction) {
         if (isAnimating) return;
@@ -142,12 +143,17 @@ function initCarousel() {
         touchStartX = e.touches[0].clientX;
         startTime = Date.now();
         isDragging = true;
+        isSwiping = false;
     }, { passive: true });
 
     showcase.addEventListener('touchmove', e => {
         if (!isDragging || isAnimating) return;
-        e.preventDefault();
         touchEndX = e.touches[0].clientX;
+        // If the user has moved their finger more than 10px, consider it a swipe
+        if (Math.abs(touchEndX - touchStartX) > 10) {
+            isSwiping = true;
+            e.preventDefault();
+        }
     }, { passive: false });
 
     showcase.addEventListener('touchend', e => {
@@ -157,19 +163,63 @@ function initCarousel() {
         const swipeTime = Date.now() - startTime;
         const swipeVelocity = Math.abs(swipeLength) / swipeTime;
         
-        // Adjust these values to make swiping more or less sensitive
-        const minSwipeLength = 50;
-        const minSwipeVelocity = 0.2;
+        // Only handle swipe if it was actually a swipe motion
+        if (isSwiping) {
+            const minSwipeLength = 50;
+            const minSwipeVelocity = 0.2;
 
-        if (Math.abs(swipeLength) > minSwipeLength || swipeVelocity > minSwipeVelocity) {
-            if (swipeLength > 0) {
-                prevSlide();
-            } else {
-                nextSlide();
+            if (Math.abs(swipeLength) > minSwipeLength || swipeVelocity > minSwipeVelocity) {
+                if (swipeLength > 0) {
+                    prevSlide();
+                } else {
+                    nextSlide();
+                }
             }
         }
 
         isDragging = false;
+    });
+
+    // Handle tap to show info on mobile
+    showcase.addEventListener('click', e => {
+        if (window.innerWidth <= 768 && !isSwiping) {
+            const card = e.target.closest('.phone-card');
+            const cardInfo = e.target.closest('.card-info');
+            
+            // If clicking on the info panel itself, don't do anything
+            if (cardInfo) return;
+
+            // If clicking outside any card, hide all info panels
+            if (!card) {
+                document.querySelectorAll('.phone-card').forEach(c => {
+                    c.classList.remove('show-info');
+                });
+                return;
+            }
+
+            // If clicking on a card
+            const wasShowingInfo = card.classList.contains('show-info');
+            
+            // Hide all info panels first
+            document.querySelectorAll('.phone-card').forEach(c => {
+                c.classList.remove('show-info');
+            });
+
+            // If the clicked card wasn't showing info, show it
+            if (!wasShowingInfo) {
+                card.classList.add('show-info');
+            }
+        }
+    });
+
+    // Hide info when starting to swipe
+    showcase.addEventListener('touchstart', () => {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.phone-card').forEach(card => {
+                card.classList.remove('show-info');
+            });
+        }
+        clearInterval(slideInterval);
     });
 
     // Auto-advance slides
