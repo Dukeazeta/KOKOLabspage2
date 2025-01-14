@@ -22,7 +22,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    bottom: 10px;
     background: white;
 }
 
@@ -193,10 +192,12 @@ h1 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 928px) {
     nav {
         padding: 1rem;
         position: relative;
+        height: 100px;
+
     }
 
     .logo-svg {
@@ -250,6 +251,11 @@ h1 {
 
     .mobile-menu {
         display: block;
+    }
+    .hero {
+        width: 91%;
+        left: 20px;
+        border-radius: 1.5rem 1.5rem 0 0;
     }
 }
 
