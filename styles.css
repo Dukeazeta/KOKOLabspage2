@@ -170,15 +170,10 @@ h1 {
 }
 
 .carousel-container {
-    position: relative;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
     width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
-    touch-action: pan-y pinch-zoom;
-}
-
-.carousel-dots {
-    display: none;
 }
 
 .phone-card {
@@ -188,7 +183,7 @@ h1 {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     transform: rotateY(-15deg);
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .phone-card:hover {
@@ -199,6 +194,10 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.carousel-dots {
+    display: none;
 }
 
 .subtitle {
@@ -322,20 +321,90 @@ h1 {
         overflow: hidden;
     }
 
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        touch-action: pan-y pinch-zoom;
+        display: block;
+    }
+
     .phone-card {
         display: none;
         width: 100%;
         max-width: 280px;
         height: 500px;
         margin: 0 auto;
-        transform: none !important;
-        transition: transform 0.3s ease;
+        transform: none;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         user-select: none;
         -webkit-user-select: none;
+        will-change: transform;
     }
 
     .phone-card.active {
         display: block;
+    }
+
+    .phone-card.slide-left {
+        animation: slideLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .phone-card.slide-right {
+        animation: slideRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .phone-card.slide-in-left {
+        animation: slideInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .phone-card.slide-in-right {
+        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideLeft {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
 
     .carousel-dots {
@@ -355,7 +424,7 @@ h1 {
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.3);
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: none;
         padding: 0;
     }
@@ -405,11 +474,5 @@ h1 {
 
     .phone-card {
         height: 420px;
-    }
-
-    .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
     }
 }

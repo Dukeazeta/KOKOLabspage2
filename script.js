@@ -73,33 +73,64 @@ function initCarousel() {
     let touchEndX = 0;
     let isDragging = false;
     let startTime = 0;
+    let isAnimating = false;
     
-    function showSlide(index) {
+    function showSlide(index, direction) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const currentCard = cards[currentSlide];
+        const nextCard = cards[index];
+        
+        // Remove previous animation classes
+        cards.forEach(card => {
+            card.classList.remove('slide-left', 'slide-right', 'slide-in-left', 'slide-in-right');
+        });
+
+        // Add appropriate animation classes
+        if (direction === 'left') {
+            currentCard.classList.add('slide-left');
+            nextCard.classList.add('slide-in-right');
+        } else {
+            currentCard.classList.add('slide-right');
+            nextCard.classList.add('slide-in-left');
+        }
+
+        // Update active states
         cards.forEach(card => card.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
         
-        cards[index].classList.add('active');
+        nextCard.classList.add('active');
         dots[index].classList.add('active');
+        
+        // Reset animation state after animation completes
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+
+        currentSlide = index;
     }
 
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % cards.length;
-        showSlide(currentSlide);
+        const nextIndex = (currentSlide + 1) % cards.length;
+        showSlide(nextIndex, 'left');
     }
 
     function prevSlide() {
-        currentSlide = (currentSlide - 1 + cards.length) % cards.length;
-        showSlide(currentSlide);
+        const prevIndex = (currentSlide - 1 + cards.length) % cards.length;
+        showSlide(prevIndex, 'right');
     }
 
     // Initialize first slide
-    showSlide(0);
+    cards[0].classList.add('active');
+    dots[0].classList.add('active');
 
     // Dot navigation
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
+            if (index === currentSlide) return;
+            const direction = index > currentSlide ? 'left' : 'right';
+            showSlide(index, direction);
         });
     });
 
@@ -107,19 +138,20 @@ function initCarousel() {
     const showcase = document.querySelector('.carousel-container');
     
     showcase.addEventListener('touchstart', e => {
+        if (isAnimating) return;
         touchStartX = e.touches[0].clientX;
         startTime = Date.now();
         isDragging = true;
     }, { passive: true });
 
     showcase.addEventListener('touchmove', e => {
-        if (!isDragging) return;
+        if (!isDragging || isAnimating) return;
         e.preventDefault();
         touchEndX = e.touches[0].clientX;
     }, { passive: false });
 
     showcase.addEventListener('touchend', e => {
-        if (!isDragging) return;
+        if (!isDragging || isAnimating) return;
         
         const swipeLength = touchEndX - touchStartX;
         const swipeTime = Date.now() - startTime;
@@ -149,7 +181,9 @@ function initCarousel() {
     });
 
     showcase.addEventListener('touchend', () => {
-        slideInterval = setInterval(nextSlide, 5000);
+        if (!isAnimating) {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
     });
 }
 
@@ -157,19 +191,23 @@ function initCarousel() {
 function handleCarousel() {
     const isMobile = window.innerWidth <= 768;
     const cards = document.querySelectorAll('.phone-card');
+    const container = document.querySelector('.carousel-container');
     
     if (isMobile) {
+        container.style.display = 'block';
         cards.forEach((card, index) => {
             if (index === 0) {
                 card.classList.add('active');
             } else {
                 card.classList.remove('active');
             }
+            card.style.display = '';
         });
         initCarousel();
     } else {
+        container.style.display = 'flex';
         cards.forEach(card => {
-            card.classList.remove('active');
+            card.classList.remove('active', 'slide-left', 'slide-right', 'slide-in-left', 'slide-in-right');
             card.style.display = 'block';
         });
     }
