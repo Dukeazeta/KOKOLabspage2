@@ -163,8 +163,22 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin: 4rem 0;
+    margin: 4rem auto;
     perspective: 1000px;
+    position: relative;
+    max-width: 1200px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    touch-action: pan-y pinch-zoom;
+}
+
+.carousel-dots {
+    display: none;
 }
 
 .phone-card {
@@ -300,6 +314,62 @@ h1 {
         left: 22px;
         border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
     }
+
+    .showcase {
+        margin: 2rem auto;
+        perspective: none;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .phone-card {
+        display: none;
+        width: 100%;
+        max-width: 280px;
+        height: 500px;
+        margin: 0 auto;
+        transform: none !important;
+        transition: transform 0.3s ease;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .phone-card.active {
+        display: block;
+    }
+
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border: none;
+        padding: 0;
+    }
+
+    .dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+    }
+
+    .phone-card img {
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-select: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -316,7 +386,6 @@ h1 {
     }
 
     .phone-card {
-        width: 240px;
         height: 420px;
     }
 
@@ -328,5 +397,19 @@ h1 {
     .subtitle {
         font-size: 1rem;
         padding: 0 1rem;
+    }
+
+    .showcase {
+        margin: 1rem auto;
+    }
+
+    .phone-card {
+        height: 420px;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
     }
 }
