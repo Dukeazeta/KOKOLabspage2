@@ -13,7 +13,8 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: white
+    ;
     color: var(--text-color);
 }
 
@@ -23,7 +24,7 @@ nav {
     align-items: center;
     padding: 1.5rem 2rem;
     bottom: 10px;
-    background: whitesmoke;
+    background: white;
 }
 
 .logo {
@@ -36,6 +37,8 @@ nav {
     height: 200px;
     width: auto;
     padding: 0;
+    background: transparent;
+    fill: currentColor;
 }
 
 .nav-links {
