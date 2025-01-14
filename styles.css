@@ -110,6 +110,9 @@ nav {
     border-radius: 50px;
     transition: all 0.3s ease;
 }
+.contact-btn:hover{
+    background-color: var(--background-color);
+}
 
 .hero {
     background: var(--background-color);
@@ -156,6 +159,10 @@ h1 {
 .primary-btn {
     background: var(--primary-color);
     color: white;
+}
+.primary-btn:hover{
+    background-color: white;
+    color: var(--accent-color);
 }
 
 .secondary-btn {
