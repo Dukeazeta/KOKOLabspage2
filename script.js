@@ -90,10 +90,10 @@ function initCarousel() {
         // Add appropriate animation classes
         if (direction === 'left') {
             currentCard.classList.add('slide-left');
-            nextCard.classList.add('slide-in-right');
+            nextCard.classList.add('slide-in-left');
         } else {
             currentCard.classList.add('slide-right');
-            nextCard.classList.add('slide-in-left');
+            nextCard.classList.add('slide-in-right');
         }
 
         // Update active states
