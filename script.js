@@ -268,3 +268,27 @@ handleCarousel();
 
 // Handle resize
 window.addEventListener('resize', handleCarousel);
+// Function to animate sections
+function animateSections() {
+    const sections = document.querySelectorAll('section, .hero'); // Select all sections and the hero
+
+    sections.forEach(section => {
+        gsap.from(section, {
+            opacity: 0,
+            y: 50, // Slide in from below
+            duration: 1,
+            ease: 'power2.out', // Smooth easing
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%', // Start animation when the top of the section hits 80% of the viewport height
+                toggleActions: 'play none none reverse' // Play on enter, reverse on leave
+            }
+        });
+    });
+}
+
+// Call the function on page load
+document.addEventListener('DOMContentLoaded', animateSections);
+
+// Handle resize
+window.addEventListener('resize', handleCarousel);
