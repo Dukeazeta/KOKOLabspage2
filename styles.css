@@ -211,6 +211,7 @@ h1 {
     transform: rotateY(-15deg);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    background: var(--background-color);
 }
 
 .phone-card:hover {
@@ -221,7 +222,18 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.phone-card.active {
+    transform: rotateY(0deg);
+    z-index: 1;
+}
+
+.phone-card:hover .card-info {
+    bottom: 0;
 }
 
 .card-info {
@@ -234,10 +246,6 @@ h1 {
     color: white;
     transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
-}
-
-.phone-card:hover .card-info {
-    bottom: 0;
 }
 
 .tech-stack {
@@ -556,6 +564,31 @@ h1 {
     }
 }
 
+@media (max-width: 768px) {
+    .phone-card {
+        width: 240px;
+        height: 480px;
+        transform: none;
+    }
+    
+    .phone-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .carousel-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .phone-card {
+        width: 200px;
+        height: 400px;
+    }
+}
+
 /* Services Section */
 .services {
     padding: 6rem 2rem;
@@ -592,7 +625,7 @@ h1 {
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .service-card:hover {
@@ -1084,5 +1117,327 @@ h1 {
 
     .consent-checkbox {
         margin-top: 1rem;
+    }
+}
+
+/* Apps Page Styles */
+.apps-showcase {
+    padding: 4rem 2rem;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.app-card {
+    background: var(--secondary-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-10px);
+}
+
+.app-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.app-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app-info {
+    padding: 1.5rem;
+}
+
+.app-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+/* Services Page Styles */
+.services-showcase {
+    padding: 4rem 2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    background: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+.service-features li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.service-features li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* About Page Styles */
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-text {
+    margin-bottom: 4rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.value-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--secondary-bg);
+    border-radius: 1rem;
+}
+
+.value-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Updates Page Styles */
+.updates-section {
+    padding: 4rem 2rem;
+}
+
+.updates-grid {
+    max-width: 800px;
+    margin: 3rem auto;
+}
+
+.update-card {
+    background: var(--secondary-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.update-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.update-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.update-content {
+    padding: 2rem;
+}
+
+.update-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.newsletter-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--secondary-bg);
+    margin-top: 4rem;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Contact Page Styles */
+.contact-section {
+    padding: 4rem 2rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+.contact-info {
+    background: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--secondary-bg);
+    color: var(--text-color);
+}
+
+.faq-section {
+    max-width: 800px;
+    margin: 4rem auto;
+}
+
+.faq-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.faq-item {
+    background: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .services-grid,
+    .team-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-card,
+    .service-card,
+    .update-card {
+        margin: 1rem;
+    }
+
+    .contact-section,
+    .updates-section,
+    .about-content {
+        padding: 2rem 1rem;
     }
 }
