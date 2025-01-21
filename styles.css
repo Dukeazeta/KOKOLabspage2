@@ -211,7 +211,6 @@ h1 {
     transform: rotateY(-15deg);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    background: var(--background-color);
 }
 
 .phone-card:hover {
@@ -222,18 +221,7 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.3s ease;
-}
-
-.phone-card.active {
-    transform: rotateY(0deg);
-    z-index: 1;
-}
-
-.phone-card:hover .card-info {
-    bottom: 0;
 }
 
 .card-info {
@@ -246,6 +234,10 @@ h1 {
     color: white;
     transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
+}
+
+.phone-card:hover .card-info {
+    bottom: 0;
 }
 
 .tech-stack {
@@ -561,31 +553,6 @@ h1 {
 
     .phone-card {
         height: 420px;
-    }
-}
-
-@media (max-width: 768px) {
-    .phone-card {
-        width: 240px;
-        height: 480px;
-        transform: none;
-    }
-    
-    .phone-card:hover {
-        transform: translateY(-10px);
-    }
-    
-    .carousel-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .phone-card {
-        width: 200px;
-        height: 400px;
     }
 }
 
