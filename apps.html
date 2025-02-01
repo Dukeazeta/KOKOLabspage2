@@ -7,27 +7,34 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
-            <a href="index.html" class="logo">KOKO Labs</a>
+            <div class="nav-brand">
+                <a href="index.html" class="logo">KOKO Labs</a>
+            </div>
+            <div class="mobile-menu">&#9776;</div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="apps.html" class="active">Apps</a>
-                <a href="#contact">Contact</a>
+                <a href="#Services">Services</a>
+                <a href="#About Us">About Us</a>
+                <a href="#Updates">Updates</a>
+                <a href="#Contact">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="apps-hero">
+    <section class="hero">
         <div class="hero-content">
             <h1>Our Apps</h1>
             <p>Discover our collection of minimalist, powerful applications</p>
         </div>
-    </header>
+    </section>
 
     <!-- Apps Grid -->
     <section class="apps">
@@ -36,14 +43,14 @@
             <div class="app-card">
                 <div class="app-preview">
                     <img src="assets/timerkoko-preview.jpg" alt="TimerKoko Preview">
-                    <span class="app-badge">Featured</span>
+                    <div class="app-badge featured">Featured</div>
                 </div>
                 <div class="app-info">
                     <h3>TimerKoko</h3>
                     <p>A minimalist timer application designed for focus and productivity.</p>
                     <div class="app-meta">
-                        <span>Version 1.0.0</span>
-                        <span>2.5 MB</span>
+                        <span><i class="fas fa-code-branch"></i> Version 1.0.0</span>
+                        <span><i class="fas fa-file-archive"></i> 2.5 MB</span>
                     </div>
                     <div class="app-features">
                         <span>Minimalist UI</span>
@@ -51,11 +58,11 @@
                         <span>Sound Alerts</span>
                     </div>
                     <div class="app-actions">
-                        <a href="#" class="download-btn">
+                        <a href="#" class="btn primary">
                             <i class="fas fa-download"></i>
                             Download
                         </a>
-                        <a href="#" class="source-btn">
+                        <a href="#" class="btn secondary">
                             <i class="fab fa-github"></i>
                             Source
                         </a>
@@ -67,14 +74,14 @@
             <div class="app-card">
                 <div class="app-preview">
                     <img src="assets/weatherkoko-preview.jpg" alt="WeatherKoko Preview">
-                    <span class="app-badge">New</span>
+                    <div class="app-badge new">New</div>
                 </div>
                 <div class="app-info">
                     <h3>WeatherKoko</h3>
                     <p>Real-time weather updates with a clean, intuitive interface.</p>
                     <div class="app-meta">
-                        <span>Version 1.1.0</span>
-                        <span>3.2 MB</span>
+                        <span><i class="fas fa-code-branch"></i> Version 1.1.0</span>
+                        <span><i class="fas fa-file-archive"></i> 3.2 MB</span>
                     </div>
                     <div class="app-features">
                         <span>Live Updates</span>
@@ -82,11 +89,11 @@
                         <span>7-Day Forecast</span>
                     </div>
                     <div class="app-actions">
-                        <a href="#" class="download-btn">
+                        <a href="#" class="btn primary">
                             <i class="fas fa-download"></i>
                             Download
                         </a>
-                        <a href="#" class="source-btn">
+                        <a href="#" class="btn secondary">
                             <i class="fab fa-github"></i>
                             Source
                         </a>
@@ -103,8 +110,8 @@
                     <h3>TicTacKoko</h3>
                     <p>A modern take on the classic Tic-Tac-Toe game with beautiful animations.</p>
                     <div class="app-meta">
-                        <span>Version 1.0.2</span>
-                        <span>1.8 MB</span>
+                        <span><i class="fas fa-code-branch"></i> Version 1.0.2</span>
+                        <span><i class="fas fa-file-archive"></i> 1.8 MB</span>
                     </div>
                     <div class="app-features">
                         <span>2 Player Mode</span>
@@ -112,11 +119,11 @@
                         <span>Statistics</span>
                     </div>
                     <div class="app-actions">
-                        <a href="#" class="download-btn">
+                        <a href="#" class="btn primary">
                             <i class="fas fa-download"></i>
                             Download
                         </a>
-                        <a href="#" class="source-btn">
+                        <a href="#" class="btn secondary">
                             <i class="fab fa-github"></i>
                             Source
                         </a>
@@ -127,24 +134,38 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="footer">
+    <footer>
         <div class="footer-content">
-            <div class="footer-info">
+            <div class="footer-section">
                 <h3>KOKO Labs</h3>
                 <p>Creating minimalist, powerful applications.</p>
             </div>
-            <div class="footer-links">
-                <a href="https://github.com/yourusername" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:contact@kokolabs.dev">
-                    <i class="fas fa-envelope"></i>
-                </a>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@kokolabs.dev</p>
+                <div class="social-links">
+                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:contact@kokolabs.dev"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <a href="index.html">Home</a>
+                <a href="apps.html">Apps</a>
+                <a href="#Services">Services</a>
+                <a href="#About">About</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 KOKO Labs. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

@@ -7,6 +7,8 @@
     --text-primary: #333;
     --text-secondary: #666;
     --accent-color: #4CAF50;
+    --card-bg: #2a2a2a;
+    --feature-bg: rgba(76, 175, 80, 0.1);
 }
 
 * {
@@ -1099,29 +1101,30 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
 }
 
 /* App Card Styles */
 .app-card {
-    background: var(--secondary-bg);
-    border-radius: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
 .app-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* App Preview Section */
 .app-preview {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 9/16;
+    aspect-ratio: 16/9;
 }
 
 .app-preview img {
@@ -1139,12 +1142,21 @@ h1 {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: var(--primary-color);
-    color: white;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.9rem;
     font-weight: 500;
+    z-index: 1;
+}
+
+.app-badge.featured {
+    background: var(--primary-color);
+    color: white;
+}
+
+.app-badge.new {
+    background: var(--accent-color);
+    color: white;
 }
 
 /* App Info Section */
@@ -1159,7 +1171,7 @@ h1 {
 }
 
 .app-info p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
@@ -1172,9 +1184,15 @@ h1 {
 }
 
 .app-meta span {
-    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    font-weight: 500;
+}
+
+.app-meta i {
+    color: var(--primary-color);
 }
 
 /* App Features */
@@ -1186,8 +1204,8 @@ h1 {
 }
 
 .app-features span {
-    background: rgba(76, 175, 80, 0.1);
-    color: var(--primary-color);
+    background: var(--feature-bg);
+    color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.9rem;
@@ -1199,7 +1217,7 @@ h1 {
     gap: 1rem;
 }
 
-.download-btn, .source-btn {
+.app-actions .btn {
     flex: 1;
     display: inline-flex;
     align-items: center;
@@ -1212,38 +1230,12 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.download-btn {
-    background: var(--primary-color);
-    color: white;
-}
-
-.source-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-.download-btn:hover, .source-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.download-btn:hover {
-    background: white;
-    color: var(--primary-color);
-}
-
-.source-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive Design for Apps Section */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .apps {
-        padding: 4rem 1rem;
-    }
-
     .apps-grid {
         grid-template-columns: 1fr;
+        padding: 0 1rem;
+        margin: 2rem auto;
     }
 
     .app-info {
