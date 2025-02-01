@@ -1086,3 +1086,225 @@ h1 {
         margin-top: 1rem;
     }
 }
+
+/* Apps Section Styles */
+.apps {
+    padding: 6rem 2rem;
+    background: var(--background-color);
+}
+
+/* Apps Grid Layout */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* App Card Styles */
+.app-card {
+    background: var(--secondary-bg);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.app-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* App Preview Section */
+.app-preview {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+}
+
+.app-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.app-card:hover .app-preview img {
+    transform: scale(1.05);
+}
+
+.app-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* App Info Section */
+.app-info {
+    padding: 2rem;
+}
+
+.app-info h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.app-info p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* App Metadata */
+.app-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.app-meta span {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* App Features */
+.app-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.app-features span {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+}
+
+/* App Action Buttons */
+.app-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.download-btn, .source-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.download-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.source-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.download-btn:hover, .source-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.download-btn:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+.source-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design for Apps Section */
+@media (max-width: 768px) {
+    .apps {
+        padding: 4rem 1rem;
+    }
+
+    .apps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .app-info {
+        padding: 1.5rem;
+    }
+
+    .app-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-preview {
+        aspect-ratio: 16/9;
+    }
+
+    .app-info h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Apps Page Hero Section */
+.apps-hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.apps-hero .hero-content {
+    max-width: 800px;
+}
+
+.apps-hero h1 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.apps-hero p {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .apps-hero {
+        min-height: 30vh;
+        padding: 4rem 1rem;
+    }
+
+    .apps-hero h1 {
+        font-size: 3rem;
+    }
+
+    .apps-hero p {
+        font-size: 1.2rem;
+    }
+}
